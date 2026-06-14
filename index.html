@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farhadina Zulkifli — Data Analyst & SQL Developer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-light: #E1F5EE;
+      --green-lighter: #EAF3DE;
+      --blue-light: #E6F1FB;
+      --blue-mid: #185FA5;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #888;
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --border: rgba(0,0,0,0.12);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f0f0f0;
+        --text-secondary: #aaa;
+        --text-tertiary: #666;
+        --bg: #1a1a1a;
+        --bg-secondary: #242424;
+        --border: rgba(255,255,255,0.12);
+        --green-light: #0a3328;
+        --green-lighter: #0d2a10;
+        --blue-light: #0d2035;
+        --blue-mid: #6aabf0;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 4rem;
+    }
+
+    /* Nav */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 0;
+    }
+    .nav-logo { font-size: 14px; font-weight: 500; color: var(--green); letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+    .nav-links a:hover { color: var(--green); }
+
+    /* Hero */
+    .hero { padding: 3.5rem 0 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
+    .hero-name { font-size: 40px; font-weight: 500; line-height: 1.1; margin-bottom: 0.4rem; }
+    .hero-title { font-size: 20px; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .hero-bio { font-size: 15px; color: var(--text-secondary); line-height: 1.75; max-width: 540px; margin-bottom: 1.75rem; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      font-size: 14px; font-weight: 500;
+      padding: 11px 22px; border-radius: var(--radius-md);
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .hero-cta:hover { background: var(--green-dark); }
+
+    /* Sections */
+    .section { padding: 2.25rem 0; border-bottom: 0.5px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.25rem;
+    }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .skill-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-secondary); border: 0.5px solid var(--border);
+      border-radius: var(--radius-md); padding: 10px 14px;
+      font-size: 13px; font-weight: 500;
+    }
+    .skill-pill i { font-size: 18px; color: var(--green); }
+
+    /* Projects */
+    .projects-list { display: flex; flex-direction: column; gap: 12px; }
+    .project-card {
+      background: var(--bg); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.25rem;
+    }
+    .proj-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 0.5rem; }
+    .proj-title { font-size: 15px; font-weight: 500; }
+    .proj-badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+    .badge-sql { background: var(--green-light); color: var(--green-dark); }
+    .badge-excel { background: var(--green-lighter); color: #3B6D11; }
+    .badge-dash { background: var(--blue-light); color: var(--blue-mid); }
+    .proj-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      font-size: 11px; color: var(--text-secondary);
+      background: var(--bg-secondary); border: 0.5px solid var(--border);
+      border-radius: 4px; padding: 2px 8px;
+    }
+
+    /* Certs */
+    .certs-list { display: flex; flex-direction: column; }
+    .cert-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+    .cert-row:last-child { border-bottom: none; }
+    .cert-icon {
+      width: 36px; height: 36px; border-radius: var(--radius-md);
+      background: var(--green-light); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .cert-icon i { font-size: 18px; color: var(--green); }
+    .cert-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .cert-meta { font-size: 12px; color: var(--text-secondary); }
+    .cert-year { margin-left: auto; font-size: 12px; color: var(--text-tertiary); white-space: nowrap; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .contact-card {
+      background: var(--bg-secondary); border-radius: var(--radius-md);
+      padding: 1rem; display: flex; align-items: center; gap: 12px;
+    }
+    .contact-card i { font-size: 20px; color: var(--green); flex-shrink: 0; }
+    .contact-label { font-size: 11px; color: var(--text-tertiary); margin-bottom: 2px; }
+    .contact-val { font-size: 13px; font-weight: 500; word-break: break-all; }
+    .contact-val a { color: inherit; text-decoration: none; }
+    .contact-val a:hover { color: var(--green); }
+
+    /* Footer */
+    .footer { padding: 2rem 0 0; text-align: center; font-size: 12px; color: var(--text-tertiary); }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 30px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <nav>
+      <div class="nav-logo">Farhadina Zulkifli</div>
+      <div class="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-tag">Available for freelance work</div>
+      <div class="hero-name">Farhadina Zulkifli</div>
+      <div class="hero-title">Data Analyst &amp; SQL Developer</div>
+      <p class="hero-bio">I specialise in MySQL database design, Excel dashboards, Power BI reporting, and data storytelling. I help small businesses and teams understand what their numbers are actually saying — and build systems to track them better.</p>
+      <a class="hero-cta" href="mailto:farhadinazulkifli88@gmail.com">
+        <i class="ti ti-mail" aria-hidden="true"></i> Get in touch
+      </a>
+    </div>
+
+    <div class="section" id="skills">
+      <div class="section-label">Skills &amp; tools</div>
+      <div class="skills-grid">
+        <div class="skill-pill"><i class="ti ti-database" aria-hidden="true"></i> MySQL</div>
+        <div class="skill-pill"><i class="ti ti-table" aria-hidden="true"></i> Excel</div>
+        <div class="skill-pill"><i class="ti ti-chart-bar" aria-hidden="true"></i> Power BI</div>
+        <div class="skill-pill"><i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboards</div>
+        <div class="skill-pill"><i class="ti ti-code" aria-hidden="true"></i> Python</div>
+        <div class="skill-pill"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i> Pivot Tables</div>
+        <div class="skill-pill"><i class="ti ti-filter" aria-hidden="true"></i> Data Cleaning</div>
+        <div class="skill-pill"><i class="ti ti-report-analytics" aria-hidden="true"></i> Reporting</div>
+        <div class="skill-pill"><i class="ti ti-git-merge" aria-hidden="true"></i> SQL Joins</div>
+      </div>
+    </div>
+
+    <div class="section" id="projects">
+      <div class="section-label">Featured projects</div>
+      <div class="projects-list">
+
+        <div class="project-card">
+          <div class="proj-header">
+            <div class="proj-title">E-commerce Sales Dashboard</div>
+            <span class="proj-badge badge-dash">Dashboard</span>
+          </div>
+          <p class="proj-desc">Built a full Excel dashboard tracking RM 16,170 in total revenue across product categories. Included monthly revenue trends, top 5 customers by spend, cancellation rates per product, and a sign-up funnel for 2023. Visualised with bar and line charts on a dark-themed layout.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Excel</span>
+            <span class="proj-tag">Charts</span>
+            <span class="proj-tag">Revenue analysis</span>
+            <span class="proj-tag">Customer segmentation</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-header">
+            <div class="proj-title">Retail Order Database (MySQL)</div>
+            <span class="proj-badge badge-sql">SQL</span>
+          </div>
+          <p class="proj-desc">Designed a normalised relational database schema covering transactions, branches, items, and customers. Wrote SQL to create tables with foreign key constraints, ALTER statements for schema updates, and multi-table queries to surface order insights.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">MySQL</span>
+            <span class="proj-tag">Schema design</span>
+            <span class="proj-tag">Foreign keys</span>
+            <span class="proj-tag">MySQL Workbench</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-header">
+            <div class="proj-title">Order Items Data Model &amp; Analysis</div>
+            <span class="proj-badge badge-excel">Excel + SQL</span>
+          </div>
+          <p class="proj-desc">Structured an order_items dataset with product IDs, quantities, and unit prices across 20+ records. Linked it to orders, customers, and products tables for cross-table reporting — enabling queries like total spend per order and revenue per product.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Data modelling</span>
+            <span class="proj-tag">Excel tables</span>
+            <span class="proj-tag">SQL joins</span>
+            <span class="proj-tag">Aggregation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section" id="certifications">
+      <div class="section-label">Certifications</div>
+      <div class="certs-list">
+        <div class="cert-row">
+          <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+          <div>
+            <div class="cert-name">Verified MySQL Coder</div>
+            <div class="cert-meta">Credmark · ID: CM-2606-ZAQU5D</div>
+          </div>
+          <div class="cert-year">Jun 2026</div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+          <div>
+            <div class="cert-name">Introducing Python Excel</div>
+            <div class="cert-meta">HRD Corp</div>
+          </div>
+          <div class="cert-year">May 2026</div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+          <div>
+            <div class="cert-name">Certified Basic of Programming</div>
+            <div class="cert-meta">HRD Corp</div>
+          </div>
+          <div class="cert-year">May 2026</div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+          <div>
+            <div class="cert-name">Certified Microsoft Excel Intermediate</div>
+            <div class="cert-meta">Six Sigma Energy</div>
+          </div>
+          <div class="cert-year">Sep 2023</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <div class="section-label">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:farhadinazulkifli88@gmail.com">farhadinazulkifli88@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-val"><a href="https://linkedin.com/in/farhadina" target="_blank">linkedin.com/in/farhadina</a></div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class="ti ti-map-pin" aria-hidden="true"></i>
+          <div>
+            <div class="contact-label">Based in</div>
+            <div class="contact-val">Selangor, Malaysia</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class="ti ti-clock" aria-hidden="true"></i>
+          <div>
+            <div class="contact-label">Availability</div>
+            <div class="contact-val">Open to projects</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Farhadina Zulkifli · Built with care</p>
+    </div>
+
+  </div>
+</body>
+</html>
